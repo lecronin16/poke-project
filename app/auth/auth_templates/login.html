@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h3>Please Log In:</h3>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+
+        {{ form.username(class='form-control', placeholder='username', autocomplete='off') }}
+        {{ form.password(class='form-control', placeholder='password', autocomplete='off') }}
+        {{ form.submit(class='btn') }}
+    </form>
+<div class="div">
+    <img src="https://wallpaperaccess.com/full/11910.jpg" class ="loginimg" >
+</div>
+{% endblock %}

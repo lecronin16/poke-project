@@ -1,0 +1,44 @@
+<nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">PokéBattle</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/pokedex">Pokédex</a>
+          </li>  
+          {% if current_user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/select">Catch Pokémon</a>
+          </li>
+          {% endif %}
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              More
+            </a>
+            <ul class="dropdown-menu">
+              {% if current_user.is_authenticated %}
+              <li><a class="dropdown-item" href="/viewteam">Pokéteam</a></li>
+              <li><a class="dropdown-item" href="{{ url_for('auth.editProfile',id=current_user.id)}}">Edit Profile</a></li>
+              <li><a class="dropdown-item" href="/logout">Log Out</a></li>
+              {% else %}
+              <li><a class="dropdown-item" href="/login">Log In</a></li>
+              <li><a class="dropdown-item" href="/signup">Sign-Up</a></li>
+              {% endif %}
+            </ul>
+          </li>
+
+        </ul>
+        {% if current_user.is_authenticated %}
+        <a href="/viewteam" class="nav-link active ms-auto" style="color:gray;">Hello, {{current_user.username}} </a>
+        {% else %}
+        <a class="nav-link active ms-auto" style="color:gray;">Hello, trainer </a>
+        {% endif %}
+      </div>
+    </div>
+  </nav>

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h3>Sign Up Below:</h3>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+
+        {{ form.username(class='form-control', placeholder='username', autocomplete='off') }}
+        {{ form.email(class='form-control', placeholder='email', autocomplete='off') }}
+        {{ form.password(class='form-control', placeholder='password', autocomplete='off') }}
+        {{ form.confirm_password(class='form-control', placeholder='confirm password', autocomplete='off') }}
+        {{ form.submit(class='btn') }}
+    </form>
+    <div class="div">
+        <img src="https://wallpaperaccess.com/full/379268.jpg" class ="signupimg" >
+    </div>
+{% endblock %}

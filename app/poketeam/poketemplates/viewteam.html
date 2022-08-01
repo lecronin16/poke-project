@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+            <h5 class="card-title">username: {{ current_user.username}}</h5>
+            <h5 class="card-title">email: {{ current_user.email}}</h5>
+            </div>
+        </div>
+      
+{% endblock %}

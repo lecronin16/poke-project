@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h3>Edit Profile Info</h3>
+<form action="/editprofile/{{user.id}}" method="post" novalidate>
+    {{ form.hidden_tag() }}
+    <p>
+        {{ form.username.label }}<br>
+        {{ form.username(size=32, value=user.username)}}
+        <br>
+        <!-- Current User ID:
+        {{ current_user.id }} -->
+    </p>
+    <p>
+        {{ form.email.label }}<br>
+        {{ form.email(size=32,value=user.email)}}
+    </p>
+
+    <p>
+        {{ form.password.label }}<br>
+        {{ form.password(size=32)}}
+    </p>
+
+    <p>
+        {{ form.confirm_password.label }}<br>
+        {{ form.password(size=32)}}
+    </p>
+
+    <p>{{ form.submit() }}</p>
+
+</form>
+
+<div class="div">
+    <img src="https://wallpaperaccess.com/full/11910.jpg" class ="loginimg" >
+</div>
+
+        <button type="button" class="btn2" data-bs-toggle="modal" data-bs-target="#exampleModal">Delete Profile</button>
+        
+        <!-- Modal -->
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h6 class="modal-title" id="exampleModalLabel">Are you sure you want to delete?</h6>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                This action cannot be undone.
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn2" href="{{ url_for('auth.deleteUser', id=current_user.id) }}">Delete</button>
+            </div></div>
+            </div>
+        </div>
+
+{% endblock %}
+

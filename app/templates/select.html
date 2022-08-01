@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form class="container" method="POST">
+    {{ form.hidden_tag() }}
+
+    {{ form.name }}
+    {{ form.submit }}
+</form>
+
+{% if pokemon %}
+  <div class="pokecard" style="width: 18rem;">
+    <img src="{{pokemon.img_url}}" class="{{pokemon.name}}" style ="height:250px;">
+    <div class="card-body" style="padding:0px;">
+        <h5>{{pokemon.name}}</h5>
+        <strong>Ability: {{pokemon.ability}}</strong>
+        <p>HP: {{pokemon.hp}}<br>
+        ATK: {{pokemon.attack}}<br>
+        DEF: {{pokemon.defense}}</p>
+        {% if current_user.is_authenticated %}
+        <button class="btn3" >Catch!</button>
+        {% endif %}
+    </div>
+  </div>
+{% endif %}
+{% endblock %}
