@@ -17,12 +17,12 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(250), nullable=False, unique=True)
     email = db.Column(db.String(250), nullable=False, unique=True)
     password = db.Column(db.String(250), nullable=False)
-    # pokemon = db.Column(db.String(250), nullable=False, unique=True)
+    pokemon = db.Column(db.Integer, db.ForeignKey('pokemon.pokemon_id'))
     pokeCollection = db.relationship("User",
         primaryjoin = (pokeCollection.c.caughtby_id == id),
         secondaryjoin = (pokeCollection.c.caught_id == id),
         secondary = pokeCollection,
-        backref = db.backref('pokeCollection', lazy='dynamic'),
+        # backref = db.backref('pokeCollection', lazy='dynamic'),
         lazy= 'dynamic')
 
 
