@@ -35,6 +35,7 @@ form {
 
 }
 
+
 .form-control {
     padding: 10px;
     margin: 10px;
@@ -116,7 +117,7 @@ a:link, a:visited {
   }
 
 .modal-content {
-height: 40%;
+height: 30%;
 }       
 
 .modal-header {
@@ -146,4 +147,16 @@ margin:50px 50px;
     padding: 2px 5px 2px 5px;
     position: relative;
 
+}
+
+.btn2:hover {
+    background-color: black;
+    transition: 0.3s;
+    color: white
+}
+
+.btn3:hover {
+    background-color:black;
+    transition: 0.3s;
+    color: white
 }

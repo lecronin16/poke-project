@@ -3,11 +3,14 @@ from config import Config
 from flask_login import LoginManager
 from flask_migrate import Migrate
 
+
+
 login= LoginManager()
 
 from .auth.auth_routes import auth
 from .models import User
 from .poketeam.routes import poketeam
+# from .routes import searchPokemon, catchPokemon, pokeDex
 
 @login.user_loader
 def load_user(user_id):

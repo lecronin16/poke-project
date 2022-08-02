@@ -52,16 +52,9 @@ def signUp():
             db.session.commit()
 
             return redirect(url_for ('auth.logIn'))
+        else:
+            flash('Invalid form. Please fill it out correctly.', 'danger')
     return render_template('signup.html', form=form)
-
-# @auth.route('/profile/<int:id>')
-# @login_required
-# def profile(id):
-#     if profile is None:
-#         return redirect(url_for('signin'))
-#     else:
-#         return render_template('profile.html', profile=profile)
-
 
 
 @auth.route('/editprofile/<int:id>', methods=["GET", "POST"])
@@ -83,10 +76,14 @@ def editProfile(id):
     else:
         return render_template('editprofile.html', form=form, user=user)
 
-@auth.route('/editprofile/delete/<int:id>', methods=["GET", "POST"])
+@auth.route('/editprofile/delete/<int:id>',methods = ['GET',"POST"])
 @login_required
 def deleteUser(id):
     user = User.query.get_or_404(id)
-    user.delete()
+    print(user)
+    db.session.delete(user)
+    db.session.commit()
     flash('Successfully deleted profile.', 'success')
     return redirect(url_for('index'))
+    # else:
+    #     return render_template('editprofile.html', user=user)

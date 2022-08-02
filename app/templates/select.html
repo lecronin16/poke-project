@@ -4,9 +4,8 @@
 
 <form class="container" method="POST">
     {{ form.hidden_tag() }}
-
-    {{ form.name }}
-    {{ form.submit }}
+    {{ form.name (placeholder='pokemon name')}}
+    {{ form.submit}}
 </form>
 
 {% if pokemon %}
