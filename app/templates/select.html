@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-
 {% block content %}
 
 <form class="container" method="POST">
@@ -17,10 +16,47 @@
         <p>HP: {{pokemon.hp}}<br>
         ATK: {{pokemon.attack}}<br>
         DEF: {{pokemon.defense}}</p>
-        {% if current_user.is_authenticated %}
-        <button class="btn3" >Catch!</button>
-        {% endif %}
+  {% if current_user.is_authenticated %}
+
+
+    {% if flag %}
+    <button type="button" class="btn2" data-bs-toggle="modal" data-bs-target="#exampleModal">Release!</button>
+                    
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+          <div class="modal-header">
+          <h6 class="modal-title" id="exampleModalLabel">Are you sure you want to release {{pokemon.name}}?</h6>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <div class="modal-footer">
+          <a type="button" class="btn2"  href="{url_for('poketeam.releasePokemon', pokemon = pokemon.name)}}">Release!</a>
+      </div></div>
+      </div>
     </div>
-  </div>
+
+    {% else %}
+    <button type="button" class="btn2" data-bs-toggle="modal" data-bs-target="#exampleModal">Catch!</button>
+          
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+          <div class="modal-header">
+          <h6 class="modal-title" id="exampleModalLabel">Are you sure you want to catch {{pokemon.name}}?</h6>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <div class="modal-footer">
+          <a type="button" class="btn2"  href="{{ url_for('poketeam.catchPoke', pokemon = pokemon.name)}}">Catch!</a>
+      </div></div>
+      </div>
+    </div>
+
+    {% endif %}
+  {% endif %}
+
+</div>
+</div>
 {% endif %}
+
 {% endblock %}
+<!-- id=pokemon.pokemon_id) -->

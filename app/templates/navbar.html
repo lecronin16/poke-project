@@ -15,6 +15,9 @@
           {% if current_user.is_authenticated %}
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="/select">Catch Pokémon</a>
+          </li>          
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{{ url_for('poketeam.battle',username=username)}}">Battle</a>
           </li>
           {% endif %}
           <li class="nav-item dropdown">
@@ -23,7 +26,7 @@
             </a>
             <ul class="dropdown-menu">
               {% if current_user.is_authenticated %}
-              <li><a class="dropdown-item" href="/viewteam">Pokéteam</a></li>
+              <li><a class="dropdown-item" href="/poketeam">Pokéteam</a></li>
               <li><a class="dropdown-item" href="{{ url_for('auth.editProfile',id=current_user.id)}}">Edit Profile</a></li>
               <li><a class="dropdown-item" href="/logout">Log Out</a></li>
               {% else %}
@@ -35,7 +38,7 @@
 
         </ul>
         {% if current_user.is_authenticated %}
-        <a href="/viewteam" class="nav-link active ms-auto" style="color:gray;">Hello, {{current_user.username}} </a>
+        <a href="/poketeam" class="nav-link active ms-auto" style="color:gray;">Hello, {{current_user.username}} </a>
         {% else %}
         <a class="nav-link active ms-auto" style="color:gray;">Hello, trainer </a>
         {% endif %}

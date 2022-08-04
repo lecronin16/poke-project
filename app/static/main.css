@@ -96,6 +96,24 @@ a:link, a:visited {
     height: auto;
     margin: auto;
 }
+.card2{
+    margin-left:100px;
+    margin-top:20px;
+    padding-bottom: 20px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius:5px;
+    justify-content: center;
+}
+
+.card3{
+    margin-top:10px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius:5px;
+    padding: 0px;
+    justify-content: center;
+}
 
 .pokecard{
     margin-left:100px;

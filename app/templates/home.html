@@ -31,11 +31,24 @@
       </div>
       <div class="col">
         <div class="p-3 border bg-light">Find, Follow, and Battle Other Users!</div>
+        {% for x in users %}
+        {% if x.username != current_user.username %}
+        <div class="card3" style="width: 18rem;">
+          <!-- <img src="..." class="card-img-top" alt="..."> -->
+          <div class="card-body" style="padding:2px;">
+            <h5 class="card-title">{{x.username}}</h5>
+            <!-- <h5 class="card-title">{{x.score}}</h5> -->
+            {% if current_user.is_authenticated %}
+            <a href="{{url_for('poketeam.battleUser', username=x.username)}}" class="btn2">Battle User</a>
+            {% endif %}
+          </div>
+        </div>
+        {% endif %}
+      {% endfor %}
+      
+        </div>
       </div>
     </div>
   </div>
 
-
-
-  </div>
 {% endblock %}
